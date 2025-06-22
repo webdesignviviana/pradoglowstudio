@@ -251,19 +251,7 @@ Incluye diagnóstico, limpieza previa, aplicación del peeling y máscara calman
 Peeling suave y refrescante para pieles grasas y mixtas. Controla brillo y puntos negros mientras ilumina la piel.
 Incluye diagnóstico, limpieza previa, aplicación del peeling y máscara descongestiva.`
   };
-
-  const serviceSelect = document.getElementById("service");
-  const serviceInfoDiv = document.getElementById("service-info");
-  const dateInput = document.getElementById("date");
-  const timeSelect = document.getElementById("time");
-
-  // Mostrar info al cambiar servicio
-  serviceSelect.addEventListener("change", () => {
-    const selected = serviceSelect.value;
-    serviceInfoDiv.textContent = serviceInfo[selected] || "Seleccioná un tratamiento para ver detalles.";
-  });
-
-  // Función const select = document.getElementById('service');
+const select = document.getElementById('service');
     const infoDiv = document.getElementById('service-info');
 
     select.addEventListener('change', () => {
@@ -392,5 +380,3 @@ Incluye diagnóstico, limpieza previa, aplicación del peeling y máscara descon
 
 </body>
 </html>
-
-
