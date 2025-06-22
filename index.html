@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PradoGlowStudio - Belleza real, piel saludable</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">PradoGlowStudio</a>
+      <ul class="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#porque-elegirnos">Por qué elegirnos</a></li>
+        <li><a href="#booking">Reserva</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+    </div>
+  </nav>
+
+  <header>
+    <section class="banner">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <h1>Bienvenidos a Prado Glow Studio</h1>
+        <p>Tu espacio de bienestar</p>
+        <a href="#booking" class="btn-reserva">Reservar ahora</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="sobre-mi" class="section">
+      <h2>Sobre mí</h2>
+      <div class="sobre-mi-container">
+        <div class="foto-placeholder" aria-label="Foto de Vanessa Navarro"></div>
+        <div class="texto-sobre-mi">
+          <p>Soy cosmetóloga y cosmiatra especializada en tratamientos faciales personalizados, combinando aparatología con dermocosmética profesional. Ofrezco higienes profundas, peelings estacionales, dermaplanning, microneedling, radiofrecuencia y más.</p>
+          <p>Trabajo con marcas dermatológicas de alta calidad, creo protocolos únicos para cada piel y acompaño cada proceso con cercanía y educación sobre el cuidado facial.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="porque-elegirnos" class="section">
+      <h2>¿Por qué elegirnos?</h2>
+      <ul>
+        <li>Protocolos personalizados adaptados a cada tipo de piel.</li>
+        <li>Uso de aparatología avanzada y dermocosmética profesional.</li>
+        <li>Acompañamiento cercano y educación para el cuidado facial.</li>
+        <li>Ambiente cálido y relajante pensado para vos.</li>
+      </ul>
+    </section>
+
+    <section id="booking" class="section booking-section">
+      <div class="booking-card">
+        <h2>Reservá tu tratamiento</h2>
+        <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
+          <!-- Para evitar spam -->
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Redirigir a página de gracias (opcional) -->
+          <input type="hidden" name="_next" value="gracias.html">
+
+
+          <label for="name">Nombre completo:</label>
+          <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
+
+          <label for="phone">Teléfono:</label>
+          <input type="tel" id="phone" name="Teléfono" placeholder="+598 9XX XXX XX" pattern="[+0-9\s\-]{8,15}" required />
+
+          <label for="service">Tratamiento:</label>
+          <select id="service" name="Tratamiento" required>
+            <option value="" disabled selected>Seleccioná un tratamiento</option>
+            <option value="CONSULTA FACIAL PERSONALIZADA">Consulta Facial Personalizada - $600</option>
+            <option value="ACNÉ CONTROL INICIAL">ACNÉ Control Inicial - $1200 / 60 min</option>
+            <option value="ACNÉ DETOX CON PEELING">ACNÉ Detox con Peeling - $1500 / 70 min</option>
+            <option value="PLAN ACNÉ COMBINADO">Plan ACNÉ Combinado - 4 sesiones $4600</option>
+            <option value="CICATRICES POST ACNÉ">Cicatrices Post ACNÉ - $2300 / 70 min</option>
+            <option value="GLOW DETOX">Glow Detox - $1800 / 70 min</option>
+            <option value="HIDRAVITAL EXPRESS">Hidravital Express - $1100 / 45 min</option>
+            <option value="RADIOLIFTING">Radiolifting - $2400 / 75 min</option>
+            <option value="PLAN RADIOLIFTING ACTIVO">Plan Radiolifting Activo - 3 sesiones $6500</option>
+            <option value="PLAN RADIOLIFTING">Plan Radiolifting + Máscara de Oro - 3 sesiones $6800</option>
+            <option value="PLAN REINICIO DE PIEL">Plan Reinicio de Piel - 4 sesiones $4900</option>
+            <option value="GLITTER PARTY">Glitter Party (Promo Lanzamiento) - $950 / 30 min</option>
+            <option value="TOTAL GLOW">Total Glow - $1500 / 50 min</option>
+            <option value="WAKE UP">Wake Up - $1000</option>
+            <option value="MESOTERAPIA FACIAL">Mesoterapia Facial - $2000 / 45 min</option>
+            <option value="DERMAPEN DIAMOND SERIES">Dermapen Diamond Series - 3 sesiones $6800</option>
+            <option value="PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS">Pack Microneedling Full Experience con Hidralips - $3800 / 75 min</option>
+            <option value="PEELINGS DE INVIERNO">Peelings de Invierno - $1400 / 45 min</option>
+            <option value="PEELINGS DE VERANO">Peelings de Verano - $1200 / 45 min</option>
+          </select>
+
+          <div class="service-info" id="service-info">Seleccioná un tratamiento para ver detalles.</div>
+
+          <label for="date">Fecha:</label>
+          <input type="date" id="date" name="Fecha" required />
+
+          <label for="time">Horario:</label>
+          <select id="time" name="Horario" required>
+            <option value="" disabled selected>Seleccioná un horario</option>
+          </select>
+
+          <button type="submit">Reservar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <section class="map-section">
+    <h2 class="map-title">Estamos en Prado, Montevideo</h2>
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.6054295183347!2d-56.20650948497424!3d-34.88572198039972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2a0aaeb872ff5%3A0x3f54156d9d05bb9a!2sPrado%2C%20Montevideo!5e0!3m2!1ses-419!2suy!4v1689563832200!5m2!1ses-419!2suy"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 PradoGlowStudio. Diseño por <a href="#">Viviana Nuñez</a></p>
+  </footer>
+
+  <script>
+    const serviceInfo = {
+      "CONSULTA FACIAL PERSONALIZADA": "Diagnóstico completo de piel, análisis de hábitos y plan de rutina personalizada.",
+      "ACNÉ CONTROL INICIAL": "Tratamiento inicial para control de acné con seguimiento personalizado.",
+      "ACNÉ DETOX CON PEELING": "Peeling especializado para detoxificación y mejora de piel con acné.",
+      "PLAN ACNÉ COMBINADO": "Plan de 4 sesiones para control y mejora avanzada del acné.",
+      "CICATRICES POST ACNÉ": "Tratamiento para reducción de cicatrices post acné con aparatología avanzada.",
+      "GLOW DETOX": "Limpieza profunda y renovación celular para un rostro radiante.",
+      "HIDRAVITAL EXPRESS": "Hidratación profunda y rápida en 45 minutos.",
+      "RADIOLIFTING": "Reafirmación facial con tecnología de radiofrecuencia.",
+      "PLAN RADIOLIFTING ACTIVO": "3 sesiones para reafirmación y rejuvenecimiento intensivo.",
+      "PLAN RADIOLIFTING": "3 sesiones + máscara de oro para un tratamiento exclusivo.",
+      "PLAN REINICIO DE PIEL": "4 sesiones para reinicio y renovación total de la piel.",
+      "GLITTER PARTY": "Promoción lanzamiento: maquillaje con glitter y brillo especial.",
+      "TOTAL GLOW": "Tratamiento completo para un brillo y suavidad excepcionales.",
+      "WAKE UP": "Despertar facial revitalizante y energizante.",
+      "MESOTERAPIA FACIAL": "Tratamiento con microinyecciones para nutrición profunda.",
+      "DERMAPEN DIAMOND SERIES": "3 sesiones de microneedling con Dermapen para rejuvenecimiento.",
+      "PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS": "Microneedling completo con hidratación labial.",
+      "PEELINGS DE INVIERNO": "Peelings especializados para la temporada de invierno.",
+      "PEELINGS DE VERANO": "Peelings ligeros y refrescantes para verano."
+    };
+
+    const select = document.getElementById('service');
+    const infoDiv = document.getElementById('service-info');
+
+    select.addEventListener('change', () => {
+      const selected = select.value;
+      infoDiv.textContent = serviceInfo[selected] || "Seleccioná un tratamiento para ver detalles.";
+    });
+
+    const horariosDisponibles = {
+      lunes: { inicio: "18:00", fin: "21:30" },
+      martes: { inicio: "18:00", fin: "21:30" },
+      miercoles: { inicio: "18:00", fin: "21:30" },
+      jueves: { inicio: "18:00", fin: "21:30" },
+      viernes: { inicio: "18:00", fin: "21:30" },
+      sabado: [
+        { inicio: "10:00", fin: "13:00" },
+        { inicio: "15:00", fin: "20:00" }
+      ],
+      domingo: { inicio: "17:00", fin: "21:00" },
+    };
+
+    const fechaInput = document.getElementById('date');
+    const horarioSelect = document.getElementById('time');
+
+    const hoy = new Date();
+    hoy.setHours(0,0,0,0);
+    const mañana = new Date(hoy);
+    mañana.setDate(mañana.getDate() + 1);
+    fechaInput.min = mañana.toISOString().split('T')[0];
+
+    function generarHorarios(inicio, fin) {
+      const horarios = [];
+      let [h, m] = inicio.split(':').map(Number);
+      const finMin = parseInt(fin.split(':')[0]) * 60 + parseInt(fin.split(':')[1]);
+
+      while (h * 60 + m < finMin) {
+        let horaStr = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+        horarios.push(horaStr);
+        m += 30;
+        if (m >= 60) {
+          m = 0;
+          h += 1;
+        }
+      }
+      return horarios;
+    }
+
+    fechaInput.addEventListener('change', () => {
+      const fecha = new Date(fechaInput.value);
+      fecha.setHours(0,0,0,0);
+
+      if (fecha <= hoy) {
+        horarioSelect.innerHTML = '<option value="" disabled selected>No se permiten fechas pasadas o el día actual</option>';
+        return;
+      }
+
+      const dias = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+      const diaNombre = dias[fecha.getDay()];
+      const rango = horariosDisponibles[diaNombre];
+
+      if (!rango) {
+        horarioSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles para este día</option>';
+        return;
+      }
+
+      let opciones = [];
+      if (Array.isArray(rango)) {
+        rango.forEach(r => {
+          opciones = opciones.concat(generarHorarios(r.inicio, r.fin));
+        });
+      } else {
+        opciones = generarHorarios(rango.inicio, rango.fin);
+      }
+
+      if (opciones.length === 0) {
+        horarioSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles</option>';
+        return;
+      }
+
+      horarioSelect.innerHTML = opciones.map(h => `<option value="${h}">${h}</option>`).join('');
+    });
+
+    // Quitamos el listener submit para que el formulario envíe normalmente con formsubmit
+  </script>
+
+</body>
+</html>
