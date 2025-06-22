@@ -263,60 +263,133 @@ Incluye diagnóstico, limpieza previa, aplicación del peeling y máscara descon
     serviceInfoDiv.textContent = serviceInfo[selected] || "Seleccioná un tratamiento para ver detalles.";
   });
 
-  // Función para llenar horarios según día seleccionado
-  function fillTimeOptions(dateStr) {
-    timeSelect.innerHTML = '<option value="" disabled selected>Seleccioná un horario</option>';
-    if (!dateStr) return;
+  // Función const select = document.getElementById('service');
+    const infoDiv = document.getElementById('service-info');
 
-    const date = new Date(dateStr + "T00:00:00");
-    const day = date.getDay(); // Domingo=0, lunes=1,... sábado=6
-
-    let horarios = [];
-
-    if (day >= 1 && day <= 5) {
-      // Lunes a viernes 18:00 a 21:30 (cada 30 min)
-      horarios = generateTimeSlots(18, 0, 21, 30);
-    } else if (day === 6) {
-      // Sábado 10:00-13:00 y 15:00-20:00
-      horarios = generateTimeSlots(10, 0, 13, 0).concat(generateTimeSlots(15, 0, 20, 0));
-    } else if (day === 0) {
-      // Domingo 17:00 a 21:00
-      horarios = generateTimeSlots(17, 0, 21, 0);
-    }
-
-    horarios.forEach(h => {
-      const option = document.createElement("option");
-      option.value = h;
-      option.textContent = h;
-      timeSelect.appendChild(option);
+    select.addEventListener('change', () => {
+      const selected = select.value;
+      infoDiv.textContent = serviceInfo[selected] || "Seleccioná un tratamiento para ver detalles.";
     });
-  }
 
-  // Generar horarios en formato HH:MM cada intervalo de minutos
-  function generateTimeSlots(startHour, startMin, endHour, endMin) {
-    const slots = [];
-    const start = startHour * 60 + startMin;
-    const end = endHour * 60 + endMin;
-    for (let m = start; m <= end; m += 30) {
-      const hh = Math.floor(m / 60);
-      const mm = m % 60;
-      slots.push(`${hh.toString().padStart(2,"0")}:${mm.toString().padStart(2,"0")}`);
+    const horariosDisponibles = {
+      lunes: { inicio: "18:00", fin: "21:30" },
+      martes: { inicio: "18:00", fin: "21:30" },
+      miercoles: { inicio: "18:00", fin: "21:30" },
+      jueves: { inicio: "18:00", fin: "21:30" },
+      viernes: { inicio: "18:00", fin: "21:30" },
+      sabado: [
+        { inicio: "10:00", fin: "13:00" },
+        { inicio: "15:00", fin: "20:00" }
+      ],
+      domingo: { inicio: "17:00", fin: "21:00" },
+    };
+
+    const fechaInput = document.getElementById('date');
+    const horarioSelect = document.getElementById('time');
+
+    const hoy = new Date();
+    hoy.setHours(0,0,0,0);
+    const mañana = new Date(hoy);
+    mañana.setDate(mañana.getDate() + 1);
+    fechaInput.min = mañana.toISOString().split('T')[0];
+
+    function generarHorarios(inicio, fin) {
+      const horarios = [];
+      let [h, m] = inicio.split(':').map(Number);
+      const finMin = parseInt(fin.split(':')[0]) * 60 + parseInt(fin.split(':')[1]);
+
+      while (h * 60 + m < finMin) {
+        let horaStr = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+        horarios.push(horaStr);
+        m += 30;
+        if (m >= 60) {
+          m = 0;
+          h += 1;
+        }
+      }
+      return horarios;
     }
-    return slots;
-  }
 
-  // Cuando cambie la fecha, actualizar los horarios disponibles
-  dateInput.addEventListener("change", () => {
-    fillTimeOptions(dateInput.value);
-  });
+    fechaInput.addEventListener('change', () => {
+      const fecha = new Date(fechaInput.value);
+      fecha.setHours(0,0,0,0);
 
-  // Para que al cargar la página y si la fecha ya está seleccionada, se carguen horarios
-  document.addEventListener("DOMContentLoaded", () => {
-    if (dateInput.value) {
-      fillTimeOptions(dateInput.value);
-    }
-  });
+      if (fecha <= hoy) {
+        horarioSelect.innerHTML = '<option value="" disabled selected>No se permiten fechas pasadas o el día actual</option>';
+        return;
+      }
+
+      const dias = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+      const diaNombre = dias[fecha.getDay()];
+      const rango = horariosDisponibles[diaNombre];
+
+      if (!rango) {
+        horarioSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles para este día</option>';
+        return;
+      }
+
+      let opciones = [];
+      if (Array.isArray(rango)) {
+        rango.forEach(r => {
+          opciones = opciones.concat(generarHorarios(r.inicio, r.fin));
+        });
+      } else {
+        opciones = generarHorarios(rango.inicio, rango.fin);
+      }
+
+      if (opciones.length === 0) {
+        horarioSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles</option>';
+        return;
+      }
+
+      horarioSelect.innerHTML = opciones.map(h => `<option value="${h}">${h}</option>`).join('');
+    });
+
+    const form = document.getElementById('booking-form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = form.name.value.trim();
+      // const email = form.email.value.trim();  -- quitado
+      const phone = form.phone.value.trim();
+      const service = form.service.value;
+      const date = form.date.value;
+      const time = form.time.value;
+
+      if (!name || !phone || !service || !date || !time) {
+        alert('Por favor completá todos los campos.');
+        return;
+      }
+
+      const fechaSeleccionada = new Date(date);
+      fechaSeleccionada.setHours(0,0,0,0);
+
+      if (fechaSeleccionada <= hoy) {
+        alert('La fecha debe ser posterior al día actual.');
+        return;
+      }
+
+      fetch('http://localhost:3000/reservar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, service, date, time }) // sin email
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.mensaje || 'Reserva enviada correctamente');
+        form.reset();
+        horarioSelect.innerHTML = '<option value="" disabled selected>Seleccioná un horario</option>';
+        infoDiv.textContent = "Seleccioná un tratamiento para ver detalles.";
+        fechaInput.min = mañana.toISOString().split('T')[0];
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Ocurrió un error al enviar la reserva. Intentá de nuevo más tarde.');
+      });
+    });
   </script>
+
 </body>
 </html>
 
