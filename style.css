@@ -85,7 +85,7 @@ nav {
 /* Banner */
 .banner {
   position: relative;
-  background-image: url('../banner.jpg');
+  background-image: url('banner.jpg');
   background-size: cover;
   background-position: center;
   height: 450px;
