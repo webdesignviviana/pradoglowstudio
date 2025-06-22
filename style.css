@@ -85,7 +85,7 @@ nav {
 /* Banner */
 .banner {
   position: relative;
-  background-image: url('../imagen/banner.jpg');
+  background-image: url('banner.jpg');
   background-size: cover;
   background-position: center;
   height: 450px;
@@ -146,7 +146,7 @@ nav {
 }
 
 .foto-placeholder {
-  background: url('../imagen/Vane.jpeg') no-repeat center center/cover;
+  background: url('Vane.jpeg') no-repeat center center/cover;
   width: 250px;
   height: 250px;
   border-radius: 50%;
