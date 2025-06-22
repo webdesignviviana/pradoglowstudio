@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* Para que los saltos de línea se respeten y se vean en la descripción */
+    /* Solo para el área de descripción dinámica del servicio */
     .service-info {
       white-space: pre-wrap;
       background: #f9f9f9;
@@ -23,6 +23,8 @@
   </style>
 </head>
 <body>
+
+  <!-- Navegación y resto del contenido (igual que tu código original) -->
 
   <nav>
     <div class="nav-container">
@@ -73,9 +75,8 @@
       <div class="booking-card">
         <h2>Reservá tu tratamiento</h2>
         <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
-          <!-- Evita spam -->
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="gracias.html" />
+          <input type="hidden" name="_next" value="gracias.html">
 
           <label for="name">Nombre completo:</label>
           <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
@@ -103,7 +104,6 @@
             <option value="MESOTERAPIA FACIAL">Mesoterapia Facial - $2000 / 45 min</option>
             <option value="DERMAPEN DIAMOND SERIES">Dermapen Diamond Series - 3 sesiones $6800</option>
             <option value="PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS">Pack Microneedling Full Experience con Hidralips - $3800 / 75 min</option>
-            <option value="PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS - 3 sesiones">Pack Microneedling Full Experience con Hidralips - 3 sesiones $10000</option>
             <option value="PEELINGS DE INVIERNO">Peelings de Invierno - $1400 / 45 min</option>
             <option value="PEELINGS DE VERANO">Peelings de Verano - $1200 / 45 min</option>
           </select>
@@ -140,7 +140,6 @@
   </footer>
 
   <script>
-  // Info servicios
   const serviceInfo = {
     "CONSULTA FACIAL PERSONALIZADA": `CONSULTA FACIAL PERSONALIZADA $600
 
@@ -201,7 +200,7 @@ La máscara de oro aporta un glow dorado instantáneo y un boost de energía cel
 Este protocolo ofrece un reinicio inteligente para tu piel. Ideal para pieles engrosadas, con poros visibles, textura irregular o que sienten que “nada les hace efecto”.
 Iniciamos con una higiene profunda, seguida de Puntas de Diamante, que no sólo removerá las células muertas, también mejora la textura y promueve la renovación celular. Aplicamos una máscara específica para purificar. Luego, incorporamos activos mediante ultrasonido, y finalizamos con hidratación intensa y sellar el tratamiento. Incluye recomendaciones de rutina personalizadas según la evolución de tu piel.`,
 
-    "GLITTER PARTY": `GLITTER PARTY  $1100
+    "GLITTER PARTY": `GLITTER PARTY $950 30 min PROMO LANZAMIENTO JUNIO , PRECIO NORMAL $1100
 Tratamiento facial intensivo para revitalizar tu piel en poco tiempo, justo antes de tu fiesta o evento.
 Realizaremos una higiene superficial, exfoliación suave adecuada a tu piel, aplicaremos activos tensores adecuados y finalizaremos con una máscara nutritiva premium efecto glow. ¡Tendrás la piel más linda del evento!`,
 
@@ -241,70 +240,84 @@ En cada sesión:
 • Máscaras regeneradoras y aparatología complementaria
 • Rutina domiciliaria ajustada para mantener los resultados
 ¿Qué vas a notar?
-Piel más uniforme, suave, firme y luminosa. Labios definidos, hidratados y rejuvenecidos.`,
+Piel más uniforme, suave, firme y luminosa. Labios cuyo color se verá realzado y con mejor contorno e hidratación.`,
 
-    "PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS - 3 sesiones": `PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS - Plan 3 sesiones $10000
-Se recomienda realizar sesiones cada 3-4 semanas para mejores resultados y mantenimiento prolongado.`,
+    "PEELINGS DE INVIERNO": `PEELINGS DE INVIERNO: $1400 – 45 min
+Tratamiento exfoliante e iluminador con activos renovadores para pieles normales a secas o mixtas.
+Ideal para prepararte antes de un cambio estacional, promover la renovación celular y atenuar manchas y marcas superficiales.
+Incluye diagnóstico, limpieza previa, aplicación del peeling y máscara calmante.`,
 
-    "PEELINGS DE INVIERNO": `PEELINGS DE INVIERNO $1400 / 45 min
-Peeling químico personalizado que ayuda a renovar la piel en la estación fría, ideal para tratar manchas, poros dilatados y textura irregular.
-Incluye diagnóstico, aplicación y seguimiento.`,
-
-    "PEELINGS DE VERANO": `PEELINGS DE VERANO $1200 / 45 min
-Peeling químico suave que ayuda a refrescar y mejorar la textura durante la estación cálida, con énfasis en la hidratación y protección.`,
-
+    "PEELINGS DE VERANO": `PEELINGS DE VERANO: $1200 – 45 min
+Peeling suave y refrescante para pieles grasas y mixtas. Controla brillo y puntos negros mientras ilumina la piel.
+Incluye diagnóstico, limpieza previa, aplicación del peeling y máscara descongestiva.`
   };
 
-  const selectService = document.getElementById('service');
-  const serviceInfoDiv = document.getElementById('service-info');
+  const serviceSelect = document.getElementById("service");
+  const serviceInfoDiv = document.getElementById("service-info");
+  const dateInput = document.getElementById("date");
+  const timeSelect = document.getElementById("time");
 
-  selectService.addEventListener('change', () => {
-    const selected = selectService.value;
-    if (serviceInfo[selected]) {
-      serviceInfoDiv.textContent = serviceInfo[selected];
-    } else {
-      serviceInfoDiv.textContent = "Seleccioná un tratamiento para ver detalles.";
-    }
+  // Mostrar info al cambiar servicio
+  serviceSelect.addEventListener("change", () => {
+    const selected = serviceSelect.value;
+    serviceInfoDiv.textContent = serviceInfo[selected] || "Seleccioná un tratamiento para ver detalles.";
   });
 
-  // Horarios según día y disponibilidad
-  const selectDate = document.getElementById('date');
-  const selectTime = document.getElementById('time');
+  // Función para llenar horarios según día seleccionado
+  function fillTimeOptions(dateStr) {
+    timeSelect.innerHTML = '<option value="" disabled selected>Seleccioná un horario</option>';
+    if (!dateStr) return;
 
-  // Horarios disponibles (Ejemplo: de lunes a viernes 10 a 19 hrs, cada hora)
-  const horarios = [
-    "10:00", "11:00", "12:00",
-    "14:00", "15:00", "16:00",
-    "17:00", "18:00", "19:00"
-  ];
+    const date = new Date(dateStr + "T00:00:00");
+    const day = date.getDay(); // Domingo=0, lunes=1,... sábado=6
 
-  selectDate.addEventListener('change', () => {
-    // Limpiamos opciones
-    selectTime.innerHTML = '<option value="" disabled selected>Seleccioná un horario</option>';
+    let horarios = [];
 
-    const dateValue = selectDate.value;
-    if (!dateValue) return;
-
-    const selectedDate = new Date(dateValue);
-    const today = new Date();
-    today.setHours(0,0,0,0);
-
-    if (selectedDate < today) {
-      alert("No se puede reservar en una fecha pasada.");
-      selectDate.value = "";
-      return;
+    if (day >= 1 && day <= 5) {
+      // Lunes a viernes 18:00 a 21:30 (cada 30 min)
+      horarios = generateTimeSlots(18, 0, 21, 30);
+    } else if (day === 6) {
+      // Sábado 10:00-13:00 y 15:00-20:00
+      horarios = generateTimeSlots(10, 0, 13, 0).concat(generateTimeSlots(15, 0, 20, 0));
+    } else if (day === 0) {
+      // Domingo 17:00 a 21:00
+      horarios = generateTimeSlots(17, 0, 21, 0);
     }
 
-    // Agregamos horarios (podés personalizar reglas aquí)
-    horarios.forEach(hora => {
-      const option = document.createElement('option');
-      option.value = hora;
-      option.textContent = hora;
-      selectTime.appendChild(option);
+    horarios.forEach(h => {
+      const option = document.createElement("option");
+      option.value = h;
+      option.textContent = h;
+      timeSelect.appendChild(option);
     });
+  }
+
+  // Generar horarios en formato HH:MM cada intervalo de minutos
+  function generateTimeSlots(startHour, startMin, endHour, endMin) {
+    const slots = [];
+    const start = startHour * 60 + startMin;
+    const end = endHour * 60 + endMin;
+    for (let m = start; m <= end; m += 30) {
+      const hh = Math.floor(m / 60);
+      const mm = m % 60;
+      slots.push(`${hh.toString().padStart(2,"0")}:${mm.toString().padStart(2,"0")}`);
+    }
+    return slots;
+  }
+
+  // Cuando cambie la fecha, actualizar los horarios disponibles
+  dateInput.addEventListener("change", () => {
+    fillTimeOptions(dateInput.value);
+  });
+
+  // Para que al cargar la página y si la fecha ya está seleccionada, se carguen horarios
+  document.addEventListener("DOMContentLoaded", () => {
+    if (dateInput.value) {
+      fillTimeOptions(dateInput.value);
+    }
   });
   </script>
-
 </body>
 </html>
+
 
