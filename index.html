@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css"/>
   <style>
+    /* Solo para el área de descripción dinámica del servicio */
     .service-info {
       white-space: pre-wrap;
       background: #f9f9f9;
@@ -22,6 +23,8 @@
   </style>
 </head>
 <body>
+
+  <!-- Navegación y resto del contenido (igual que tu código original) -->
 
   <nav>
     <div class="nav-container">
@@ -52,7 +55,7 @@
       <div class="sobre-mi-container">
         <div class="foto-placeholder" aria-label="Foto de Vanessa Navarro"></div>
         <div class="texto-sobre-mi">
-          <p>Soy cosmetóloga y cosmiatra especializada en tratamientos faciales personalizados, combinando aparatología con dermocosmética profesional.</p>
+          <p>Soy cosmetóloga y cosmiatra especializada en tratamientos faciales personalizados, combinando aparatología con dermocosmética profesional. Ofrezco higienes profundas, peelings estacionales, dermaplanning, microneedling, radiofrecuencia y más.</p>
           <p>Trabajo con marcas dermatológicas de alta calidad, creo protocolos únicos para cada piel y acompaño cada proceso con cercanía y educación sobre el cuidado facial.</p>
         </div>
       </div>
@@ -73,7 +76,7 @@
         <h2>Reservá tu tratamiento</h2>
         <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="gracias.html" />
+          <input type="hidden" name="_next" value="gracias.html">
 
           <label for="name">Nombre completo:</label>
           <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
@@ -86,7 +89,23 @@
             <option value="" disabled selected>Seleccioná un tratamiento</option>
             <option value="CONSULTA FACIAL PERSONALIZADA">Consulta Facial Personalizada - $600</option>
             <option value="ACNÉ CONTROL INICIAL">ACNÉ Control Inicial - $1200 / 60 min</option>
-            <!-- Acá seguí con todas las opciones que ya tenías -->
+            <option value="ACNÉ DETOX CON PEELING">ACNÉ Detox con Peeling - $1500 / 70 min</option>
+            <option value="PLAN ACNÉ COMBINADO">Plan ACNÉ Combinado - 4 sesiones $4600</option>
+            <option value="CICATRICES POST ACNÉ">Cicatrices Post ACNÉ - $2300 / 70 min</option>
+            <option value="GLOW DETOX">Glow Detox - $1800 / 70 min</option>
+            <option value="HIDRAVITAL EXPRESS">Hidravital Express - $1100 / 45 min</option>
+            <option value="RADIOLIFTING">Radiolifting - $2400 / 75 min</option>
+            <option value="PLAN RADIOLIFTING ACTIVO">Plan Radiolifting Activo - 3 sesiones $6500</option>
+            <option value="PLAN RADIOLIFTING">Plan Radiolifting + Máscara de Oro - 3 sesiones $6800</option>
+            <option value="PLAN REINICIO DE PIEL">Plan Reinicio de Piel - 4 sesiones $4900</option>
+            <option value="GLITTER PARTY">Glitter Party (Promo Lanzamiento) - $950 / 30 min</option>
+            <option value="TOTAL GLOW">Total Glow - $1500 / 50 min</option>
+            <option value="WAKE UP">Wake Up - $1000</option>
+            <option value="MESOTERAPIA FACIAL">Mesoterapia Facial - $2000 / 45 min</option>
+            <option value="DERMAPEN DIAMOND SERIES">Dermapen Diamond Series - 3 sesiones $6800</option>
+            <option value="PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS">Pack Microneedling Full Experience con Hidralips - $3800 / 75 min</option>
+            <option value="PEELINGS DE INVIERNO">Peelings de Invierno - $1400 / 45 min</option>
+            <option value="PEELINGS DE VERANO">Peelings de Verano - $1200 / 45 min</option>
           </select>
 
           <div class="service-info" id="service-info">Seleccioná un tratamiento para ver detalles.</div>
@@ -109,7 +128,7 @@
     <h2 class="map-title">Estamos en Prado, Montevideo</h2>
     <div class="map-wrapper">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!..."
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.6054295183347!2d-56.20650948497424!3d-34.88572198039972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2a0aaeb872ff5%3A0x3f54156d9d05bb9a!2sPrado%2C%20Montevideo!5e0!3m2!1ses-419!2suy!4v1689563832200!5m2!1ses-419!2suy"
         width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
@@ -121,8 +140,148 @@
   </footer>
 
   <script>
-    // Mantené acá todo el código de tratamientoInfo, generación de horarios y lógica de selección
-    // NO INCLUYAS fetch() ni e.preventDefault()
+  const serviceInfo = {
+    "CONSULTA FACIAL PERSONALIZADA": `CONSULTA FACIAL PERSONALIZADA $600
+
+Incluye diagnóstico y un plan de acción: realizaremos un análisis de tu piel, hábitos y objetivos, evaluaremos tu rutina actual (si la tenés), y te brindaremos una rutina inicial domiciliaria y posibles tratamientos a realizar. Armaremos un plan tentativo determinando las frecuencias y objetivos en cada sesión. Si luego decides comenzar un tratamiento, el monto de la consulta se descontará de tu primera sesión.`,
+
+    "ACNÉ CONTROL INICIAL": `ACNÉ CONTROL INCIAL:  $1200 / 60 min
+Ideal para brotes leves a moderados.
+
+Comenzamos con un diagnóstico y evaluación personalizada. Luego realizamos una higiene facial profunda y preparamos la piel con vapor de ozono, que actúa como bactericida y ayuda a oxigenar y abrir suavemente los poros.
+A continuación, realizamos una extracción manual controlada, seguida de una máscara adaptada a las necesidades de tu piel. Finalizamos con la aplicación de activos específicos, hidratación y protección solar.
+Incluye rutina domiciliaria personalizada.`,
+
+    "ACNÉ DETOX CON PEELING": `ACNÉ DETOX CON PEELING: $1500 / 70 min
+Ideal para pieles con brotes activos y textura irregular.
+
+Comenzamos con un diagnóstico y evaluación personalizada. Luego realizamos una higiene profunda y tonificación.
+Aplicamos un peeling adaptado a las necesidades de tu piel, seguido de una oxigenación y calmado con aparatología de alta frecuencia.
+Continuamos con una máscara descongestiva y finalizamos con una hidratación emoliente intensiva y protección solar.
+Incluye rutina domiciliaria personalizada.`,
+
+    "PLAN ACNÉ COMBINADO": `PLAN ACNÉ COMBINADO - Plan de 4 sesiones $4600
+Es perfecto si querés tener un tratamiento completo, este se ajusta sesión a sesión según tu evolución.
+En cada sesión realizaremos un diagnóstico personalizado y ajustaremos tanto los procedimientos como tu rutina domiciliaria según la evolución de tu piel.
+Combinaremos distintas técnicas para abordar brotes, textura, marcas y mejorar progresivamente el estado general del cutis.`,
+
+    "CICATRICES POST ACNÉ": `CICATRICES POST ACNÉ $2300 / 70 min
+Tratamiento diseñado para marcas, cicatrices y poros dilatados como secuelas de acné. No apto en casos de acné activo.
+
+Comenzamos con un diagnóstico y evaluación personalizada. Luego realizamos una higiene profunda y una exfoliación suave, adaptada a las necesidades de tu piel, para remover células muertas.
+A continuación, aplicamos microagujas con un activo estéril seleccionado según el objetivo. Finalizamos con una máscara nutritiva, hidratación profunda y protección solar.`,
+
+    "GLOW DETOX": `GLOW DETOX $1800 70 min
+Ideal para pieles apagadas, congestionadas, con puntos negros, millium (“bolitas de grasa”), que no ha recibido atención en mucho tiempo.
+
+Comenzamos con un diagnóstico y evaluación personalizada.
+Realizamos una higiene profunda y preparamos la piel con productos específicos y vapor de ozono, que actúa como bactericida, oxigena y ayuda a abrir suavemente los poros.
+Luego realizamos una extracción manual controlada de comedones y quistes de millium.
+Continuamos con aparatología de alta frecuencia, que favorece la circulación, desinflama, ayuda a cerrar los poros y calma la rojez post-extracción.
+Finalizamos con una máscara descongestiva, dejando la piel más fresca, limpia y equilibrada.`,
+
+    "HIDRAVITAL EXPRESS": `HIDRAVITAL EXPRESS $1100 45 min
+Comenzamos con un diagnóstico y evaluación personalizada.
+Realizamos una higiene profunda y luego un tratamiento hidratante con ultrasonido, que permite la penetración de activos a nivel profundo.
+El resultado: una piel luminosa, fresca y revitalizada desde la primera sesión.`,
+
+    "RADIOLIFTING": `RADIOLIFTING $2400 75 min
+Comenzamos con un diagnóstico y evaluación personalizada.
+Luego de una higiene profunda, aplicamos tecnología de radiofrecuencia, que genera un efecto tensor inmediato. Este tratamiento, basado en calor, mejora la firmeza, estimula la regeneración celular, redefine el óvalo facial y activa la producción de colágeno, con resultados visibles desde la primera sesión.
+Finalizamos con activos específicos, hidratación profunda y una máscara refrescante adaptada a tu tipo de piel.`,
+
+    "PLAN RADIOLIFTING ACTIVO": `PLAN RADIOLIFTING ACTIVO - Plan x 3 sesiones $6500`,
+
+    "PLAN RADIOLIFTING": `PLAN RADIOLIFTING - Plan de 3 sesiones con máscara de Oro PREMIUM $6800
+Este plan combina radiofrecuencia con una experiencia de lujo con Gold Therapy, que cierra cada sesión con un toque exclusivo. Un tratamiento que reafirma, tonifica e hidrata en profundidad, revitalizando la piel desde las capas más profundas.
+La máscara de oro aporta un glow dorado instantáneo y un boost de energía celular, dejando la piel luminosa, firme y visiblemente rejuvenecida.`,
+
+    "PLAN REINICIO DE PIEL": `PLAN REINICIO DE PIEL (x 4 sesiones) $4900
+Este protocolo ofrece un reinicio inteligente para tu piel. Ideal para pieles engrosadas, con poros visibles, textura irregular o que sienten que “nada les hace efecto”.
+Iniciamos con una higiene profunda, seguida de Puntas de Diamante, que no sólo removerá las células muertas, también mejora la textura y promueve la renovación celular. Aplicamos una máscara específica para purificar. Luego, incorporamos activos mediante ultrasonido, y finalizamos con hidratación intensa y sellar el tratamiento. Incluye recomendaciones de rutina personalizadas según la evolución de tu piel.`,
+
+    "GLITTER PARTY": `GLITTER PARTY $950 30 min PROMO LANZAMIENTO JUNIO , PRECIO NORMAL $1100
+Tratamiento facial intensivo para revitalizar tu piel en poco tiempo, justo antes de tu fiesta o evento.
+Realizaremos una higiene superficial, exfoliación suave adecuada a tu piel, aplicaremos activos tensores adecuados y finalizaremos con una máscara nutritiva premium efecto glow. ¡Tendrás la piel más linda del evento!`,
+
+    "TOTAL GLOW": `TOTAL GLOW $1500 - 50 min
+Tratamiento profundo de revitalización e iluminación.
+Facial intensivo ideal para devolverle a tu piel luminosidad, frescura y vitalidad.
+Comenzamos con una higiene profunda, seguida de una exfoliación con puntas de diamante para afinar la textura y remover células muertas.
+Aplicamos un activo nutritivo e iluminador según las necesidades de tu piel, y finalizamos con una máscara de Oro Premium con efecto glow y nutrición intensa.`,
+
+    "WAKE UP": `WAKE UP $1000
+Cuando tu piel refleja el cansancio… Esta sesión está pensada para pieles opacas o fatigadas, que necesitan recuperar vitalidad y frescura después de una semana intensa.
+Si sentís tu piel apagada y cargada, este tratamiento la despierta y recarga de energía, devolviéndole ese brillo saludable que tanto necesitás.`,
+
+    "MESOTERAPIA FACIAL": `MESOTERAPIA FACIAL $2000 45 min
+Una sesión intensiva que combina higiene profunda con tecnología de microinyección intradérmica. Infiltramos activos estériles específicos para tratar hiperpigmentaciones, arrugas, flacidez y falta de luminosidad.
+Esta tecnología que actúa de forma directa y profunda estimula directamente la producción de colágeno a nivel epidérmico.
+Incluye:
+• Activos estériles de alta gama según diagnóstico
+• Microinyecciones con técnica segura y precisa
+• Higiene + máscara adaptada + hidratación intensiva
+Ideal para pieles apagadas, con fotoenvejecimiento o deshidratadas.`,
+
+    "DERMAPEN DIAMOND SERIES": `DERMAPEN DIAMOND SERIES (Plan de 3 sesiones) $6800
+Ideal para arrugas, poros dilatados, marcas, flacidez y pieles apagadas.
+Mediante microperforaciones controladas con cartucho estéril, inducimos colágeno y elastina de forma natural. Aplicamos activos tensores que penetran a nivel profundo, ayudando a mejorar textura, marcas y líneas.
+Incluye en cada sesión:
+- Higiene profunda + dermapen con activo específico
+- Máscara adaptada y aparatología complementaria según evolución
+- Control de evolución + ajuste de rutina domiciliaria.`,
+
+    "PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS": `PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS 75 min $3800
+Es una experiencia facial completa, pensada para quienes quieren verse y sentirse renovadas.
+Un tratamiento intensivo que transforma la textura, luminosidad y firmeza de tu piel mientras hidrata y define tus labios de forma natural con ácido hialurónico como activo principal.
+En cada sesión:
+• Microneedling con cartucho estéril y activos premium
+• Técnica Hidralips con anestesia local para máxima comodidad
+• Máscaras regeneradoras y aparatología complementaria
+• Rutina domiciliaria ajustada para mantener los resultados
+¿Qué vas a notar?
+Piel más uniforme, suave, firme y luminosa. Labios cuyo color se verá realzado y con mejor contorno e hidratación.`,
+
+    "PEELINGS DE INVIERNO": `PEELINGS DE INVIERNO: $1400 – 45 min
+Tratamiento exfoliante e iluminador con activos renovadores para pieles normales a secas o mixtas.
+Ideal para prepararte antes de un cambio estacional, mejorar textura y luminosidad.`,
+
+    "PEELINGS DE VERANO": `PEELINGS DE VERANO: $1200 – 45 min
+Exfoliación suave con activos calmantes y antioxidantes, ideal para pieles sensibles o con tendencia a rojeces.
+Prepara tu piel para la exposición solar con hidratación y protección.`
+
+  };
+
+  // Actualizar descripción según tratamiento seleccionado
+  const serviceSelect = document.getElementById('service');
+  const serviceInfoDiv = document.getElementById('service-info');
+
+  serviceSelect.addEventListener('change', () => {
+    const selected = serviceSelect.value;
+    if (serviceInfo[selected]) {
+      serviceInfoDiv.textContent = serviceInfo[selected];
+    } else {
+      serviceInfoDiv.textContent = "Seleccioná un tratamiento para ver detalles.";
+    }
+  });
+
+  // Opciones de horarios disponibles
+  const timeSelect = document.getElementById('time');
+
+  const horarios = [
+    "10:00", "10:30", "11:00", "11:30",
+    "15:00", "15:30", "16:00", "16:30",
+    "18:00", "18:30", "19:00", "19:30",
+    "20:00", "20:30", "21:00", "21:30"
+  ];
+
+  // Poblar el select de horarios
+  horarios.forEach(horario => {
+    const option = document.createElement('option');
+    option.value = horario;
+    option.textContent = horario;
+    timeSelect.appendChild(option);
+  });
   </script>
 
 </body>
