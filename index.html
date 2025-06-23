@@ -70,58 +70,55 @@
         <li>Ambiente cálido y relajante pensado para vos.</li>
       </ul>
     </section>
+<section id="booking" class="section booking-section">
+  <div class="booking-card">
+    <h2>Reservá tu tratamiento</h2>
+    <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
 
-    <section id="booking" class="section booking-section">
-      <div class="booking-card">
-        <h2>Reservá tu tratamiento</h2>
-        <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
-  <!-- campos del formulario -->
-</form>
+      <label for="name">Nombre completo:</label>
+      <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
 
-          <label for="name">Nombre completo:</label>
-          <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
+      <label for="phone">Teléfono:</label>
+      <input type="tel" id="phone" name="Teléfono" placeholder="+598 9XX XXX XX" pattern="[+0-9\s\-]{8,15}" required />
 
-          <label for="phone">Teléfono:</label>
-          <input type="tel" id="phone" name="Teléfono" placeholder="+598 9XX XXX XX" pattern="[+0-9\s\-]{8,15}" required />
+      <label for="service">Tratamiento:</label>
+      <select id="service" name="Tratamiento" required>
+        <option value="" disabled selected>Seleccioná un tratamiento</option>
+        <option value="CONSULTA FACIAL PERSONALIZADA">Consulta Facial Personalizada - $600</option>
+        <option value="ACNÉ CONTROL INICIAL">ACNÉ Control Inicial - $1200 / 60 min</option>
+        <option value="ACNÉ DETOX CON PEELING">ACNÉ Detox con Peeling - $1500 / 70 min</option>
+        <option value="PLAN ACNÉ COMBINADO">Plan ACNÉ Combinado - 4 sesiones $4600</option>
+        <option value="CICATRICES POST ACNÉ">Cicatrices Post ACNÉ - $2300 / 70 min</option>
+        <option value="GLOW DETOX">Glow Detox - $1800 / 70 min</option>
+        <option value="HIDRAVITAL EXPRESS">Hidravital Express - $1100 / 45 min</option>
+        <option value="RADIOLIFTING">Radiolifting - $2400 / 75 min</option>
+        <option value="PLAN RADIOLIFTING ACTIVO">Plan Radiolifting Activo - 3 sesiones $6500</option>
+        <option value="PLAN RADIOLIFTING">Plan Radiolifting + Máscara de Oro - 3 sesiones $6800</option>
+        <option value="PLAN REINICIO DE PIEL">Plan Reinicio de Piel - 4 sesiones $4900</option>
+        <option value="GLITTER PARTY">Glitter Party (Promo Lanzamiento) - $950 / 30 min</option>
+        <option value="TOTAL GLOW">Total Glow - $1500 / 50 min</option>
+        <option value="WAKE UP">Wake Up - $1000</option>
+        <option value="MESOTERAPIA FACIAL">Mesoterapia Facial - $2000 / 45 min</option>
+        <option value="DERMAPEN DIAMOND SERIES">Dermapen Diamond Series - 3 sesiones $6800</option>
+        <option value="PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS">Pack Microneedling Full Experience con Hidralips - $3800 / 75 min</option>
+        <option value="PEELINGS DE INVIERNO">Peelings de Invierno - $1400 / 45 min</option>
+        <option value="PEELINGS DE VERANO">Peelings de Verano - $1200 / 45 min</option>
+      </select>
 
-          <label for="service">Tratamiento:</label>
-          <select id="service" name="Tratamiento" required>
-            <option value="" disabled selected>Seleccioná un tratamiento</option>
-            <option value="CONSULTA FACIAL PERSONALIZADA">Consulta Facial Personalizada - $600</option>
-            <option value="ACNÉ CONTROL INICIAL">ACNÉ Control Inicial - $1200 / 60 min</option>
-            <option value="ACNÉ DETOX CON PEELING">ACNÉ Detox con Peeling - $1500 / 70 min</option>
-            <option value="PLAN ACNÉ COMBINADO">Plan ACNÉ Combinado - 4 sesiones $4600</option>
-            <option value="CICATRICES POST ACNÉ">Cicatrices Post ACNÉ - $2300 / 70 min</option>
-            <option value="GLOW DETOX">Glow Detox - $1800 / 70 min</option>
-            <option value="HIDRAVITAL EXPRESS">Hidravital Express - $1100 / 45 min</option>
-            <option value="RADIOLIFTING">Radiolifting - $2400 / 75 min</option>
-            <option value="PLAN RADIOLIFTING ACTIVO">Plan Radiolifting Activo - 3 sesiones $6500</option>
-            <option value="PLAN RADIOLIFTING">Plan Radiolifting + Máscara de Oro - 3 sesiones $6800</option>
-            <option value="PLAN REINICIO DE PIEL">Plan Reinicio de Piel - 4 sesiones $4900</option>
-            <option value="GLITTER PARTY">Glitter Party (Promo Lanzamiento) - $950 / 30 min</option>
-            <option value="TOTAL GLOW">Total Glow - $1500 / 50 min</option>
-            <option value="WAKE UP">Wake Up - $1000</option>
-            <option value="MESOTERAPIA FACIAL">Mesoterapia Facial - $2000 / 45 min</option>
-            <option value="DERMAPEN DIAMOND SERIES">Dermapen Diamond Series - 3 sesiones $6800</option>
-            <option value="PACK MICRONEEDLING FULL EXPIRIENCE CON HIDRALIPS">Pack Microneedling Full Experience con Hidralips - $3800 / 75 min</option>
-            <option value="PEELINGS DE INVIERNO">Peelings de Invierno - $1400 / 45 min</option>
-            <option value="PEELINGS DE VERANO">Peelings de Verano - $1200 / 45 min</option>
-          </select>
+      <div class="service-info" id="service-info">Seleccioná un tratamiento para ver detalles.</div>
 
-          <div class="service-info" id="service-info">Seleccioná un tratamiento para ver detalles.</div>
+      <label for="date">Fecha:</label>
+      <input type="date" id="date" name="Fecha" required />
 
-          <label for="date">Fecha:</label>
-          <input type="date" id="date" name="Fecha" required />
+      <label for="time">Horario:</label>
+      <select id="time" name="Horario" required>
+        <option value="" disabled selected>Seleccioná un horario</option>
+      </select>
 
-          <label for="time">Horario:</label>
-          <select id="time" name="Horario" required>
-            <option value="" disabled selected>Seleccioná un horario</option>
-          </select>
-
-          <button type="submit">Reservar</button>
-        </form>
-      </div>
-    </section>
+      <button type="submit">Reservar</button>
+    </form>
+  </div>
+</section>
   </main>
 
   <section class="map-section">
