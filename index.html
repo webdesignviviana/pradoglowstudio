@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+7<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -75,6 +75,14 @@
   <div class="booking-card">
     <h2>Reservá tu tratamiento</h2>
     <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
+
+  <!-- Campos ocultos -->
+  <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Tus campos de nombre, teléfono, tratamiento, etc -->
+  ...
+</form>
 
       <label for="name">Nombre completo:</label>
       <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
