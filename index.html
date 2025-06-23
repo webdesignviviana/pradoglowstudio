@@ -282,6 +282,84 @@ Prepara tu piel para la exposición solar con hidratación y protección.`
     option.textContent = horario;
     timeSelect.appendChild(option);
   });
+
+const fechaInput = document.getElementById('date');
+const horarioSelect = document.getElementById('time');
+
+const hoy = new Date();
+hoy.setHours(0,0,0,0);
+
+const mañana = new Date(hoy);
+mañana.setDate(mañana.getDate() + 1);
+
+// Establecer fecha mínima seleccionable como mañana
+fechaInput.min = mañana.toISOString().split('T')[0];
+
+// Horarios según día de la semana
+const horariosDisponibles = {
+  lunes: { inicio: "18:00", fin: "21:30" },
+  martes: { inicio: "18:00", fin: "21:30" },
+  miercoles: { inicio: "18:00", fin: "21:30" },
+  jueves: { inicio: "18:00", fin: "21:30" },
+  viernes: { inicio: "18:00", fin: "21:30" },
+  sabado: [
+    { inicio: "10:00", fin: "13:00" },
+    { inicio: "15:00", fin: "20:00" }
+  ],
+  domingo: { inicio: "17:00", fin: "21:00" },
+};
+
+function generarHorarios(inicio, fin) {
+  const horarios = [];
+  let [h, m] = inicio.split(':').map(Number);
+  const finMin = parseInt(fin.split(':')[0]) * 60 + parseInt(fin.split(':')[1]);
+
+  while (h * 60 + m < finMin) {
+    let horaStr = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    horarios.push(horaStr);
+    m += 30;
+    if (m >= 60) {
+      m = 0;
+      h += 1;
+    }
+  }
+  return horarios;
+}
+
+fechaInput.addEventListener('change', () => {
+  const fecha = new Date(fechaInput.value);
+  fecha.setHours(0,0,0,0);
+
+  if (fecha <= hoy) {
+    horarioSelect.innerHTML = '<option value="" disabled selected>No se permiten fechas pasadas o el día actual</option>';
+    return;
+  }
+
+  const dias = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+  const diaNombre = dias[fecha.getDay()];
+  const rango = horariosDisponibles[diaNombre];
+
+  if (!rango) {
+    horarioSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles para este día</option>';
+    return;
+  }
+
+  let opciones = [];
+  if (Array.isArray(rango)) {
+    rango.forEach(r => {
+      opciones = opciones.concat(generarHorarios(r.inicio, r.fin));
+    });
+  } else {
+    opciones = generarHorarios(rango.inicio, rango.fin);
+  }
+
+  if (opciones.length === 0) {
+    horarioSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles</option>';
+    return;
+  }
+
+  horarioSelect.innerHTML = opciones.map(h => `<option value="${h}">${h}</option>`).join('');
+});
   </script>
 
 </body>
