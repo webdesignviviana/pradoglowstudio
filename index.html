@@ -1,4 +1,4 @@
-7<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -74,9 +74,9 @@
 <section id="booking" class="section booking-section">
   <div class="booking-card">
     <h2>Reservá tu tratamiento</h2>
-    <form id="booking-form" action="https://formsubmit.co/vivi.v.nunez@gmail.com" method="POST">
-  <input type="hidden" name="_next" value="https://webdesignviviana.github.io/pradoglowstudio/gracias.html">
-  <input type="hidden" name="_captcha" value="false">
+    <form id="booking-form">
+      <input type="hidden" name="_next" value="https://webdesignviviana.github.io/pradoglowstudio/gracias.html">
+      <input type="hidden" name="_captcha" value="false">
 
       <label for="name">Nombre completo:</label>
       <input type="text" id="name" name="Nombre completo" placeholder="Tu nombre" required />
@@ -119,10 +119,158 @@
       </select>
 
       <button type="submit">Reservar</button>
-
     </form>
+    <!-- Aquí mostramos mensajes de error o éxito -->
+    <div id="response-message" style="margin-top:1rem; font-weight:bold;"></div>
   </div>
 </section>
+<!-- El resto de tu código HTML (mapa, footer) queda igual -->
+
+<script>
+  // Tu objeto serviceInfo y código para mostrar detalles tratamiento
+  const serviceInfo = {
+    "CONSULTA FACIAL PERSONALIZADA": `CONSULTA FACIAL PERSONALIZADA $600
+
+Incluye diagnóstico y un plan de acción: realizaremos un análisis de tu piel, hábitos y objetivos, evaluaremos tu rutina actual (si la tenés), y te brindaremos una rutina inicial domiciliaria y posibles tratamientos a realizar. Armaremos un plan tentativo determinando las frecuencias y objetivos en cada sesión. Si luego decides comenzar un tratamiento, el monto de la consulta se descontará de tu primera sesión.`,
+    // ... (el resto igual)
+    "PEELINGS DE VERANO": `PEELINGS DE VERANO: $1200 – 45 min
+Exfoliación suave con activos calmantes y antioxidantes, ideal para pieles sensibles o con tendencia a rojeces.
+Prepara tu piel para la exposición solar con hidratación y protección.`
+  };
+
+  const serviceSelect = document.getElementById('service');
+  const serviceInfoDiv = document.getElementById('service-info');
+
+  serviceSelect.addEventListener('change', () => {
+    const selected = serviceSelect.value;
+    if (serviceInfo[selected]) {
+      serviceInfoDiv.textContent = serviceInfo[selected];
+    } else {
+      serviceInfoDiv.textContent = "Seleccioná un tratamiento para ver detalles.";
+    }
+  });
+
+  // Horarios disponibles según día
+  const timeSelect = document.getElementById('time');
+
+  const horariosDisponibles = {
+    lunes: { inicio: "18:00", fin: "21:30" },
+    martes: { inicio: "18:00", fin: "21:30" },
+    miercoles: { inicio: "18:00", fin: "21:30" },
+    jueves: { inicio: "18:00", fin: "21:30" },
+    viernes: { inicio: "18:00", fin: "21:30" },
+    sabado: [
+      { inicio: "10:00", fin: "13:00" },
+      { inicio: "15:00", fin: "20:00" }
+    ],
+    domingo: { inicio: "17:00", fin: "21:00" },
+  };
+
+  function generarHorarios(inicio, fin) {
+    const horarios = [];
+    let [h, m] = inicio.split(':').map(Number);
+    const finMin = parseInt(fin.split(':')[0]) * 60 + parseInt(fin.split(':')[1]);
+
+    while (h * 60 + m < finMin) {
+      let horaStr = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+      horarios.push(horaStr);
+      m += 30;
+      if (m >= 60) {
+        m = 0;
+        h += 1;
+      }
+    }
+    return horarios;
+  }
+
+  const fechaInput = document.getElementById('date');
+
+  const hoy = new Date();
+  hoy.setHours(0,0,0,0);
+  const mañana = new Date(hoy);
+  mañana.setDate(mañana.getDate() + 1);
+  fechaInput.min = mañana.toISOString().split('T')[0];
+
+  fechaInput.addEventListener('change', () => {
+    const fecha = new Date(fechaInput.value);
+    fecha.setHours(0,0,0,0);
+
+    if (fecha <= hoy) {
+      timeSelect.innerHTML = '<option value="" disabled selected>No se permiten fechas pasadas o el día actual</option>';
+      return;
+    }
+
+    const dias = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+    const diaNombre = dias[fecha.getDay()];
+    const rango = horariosDisponibles[diaNombre];
+
+    if (!rango) {
+      timeSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles para este día</option>';
+      return;
+    }
+
+    let opciones = [];
+    if (Array.isArray(rango)) {
+      rango.forEach(r => {
+        opciones = opciones.concat(generarHorarios(r.inicio, r.fin));
+      });
+    } else {
+      opciones = generarHorarios(rango.inicio, rango.fin);
+    }
+
+    if (opciones.length === 0) {
+      timeSelect.innerHTML = '<option value="" disabled selected>No hay horarios disponibles</option>';
+      return;
+    }
+
+    timeSelect.innerHTML = opciones.map(h => `<option value="${h}">${h}</option>`).join('');
+  });
+
+  // ---------------------------
+  // Código nuevo para enviar el formulario a Apps Script con fetch
+  // ---------------------------
+
+  const form = document.getElementById('booking-form');
+  const responseDiv = document.getElementById('response-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const params = new URLSearchParams();
+
+    for (const pair of data) {
+      params.append(pair[0], pair[1]);
+    }
+
+    // Reemplaza con la URL de tu Google Apps Script desplegado
+    const url = 'https://script.google.com/macros/s/AKfycbyxgg5DTgdl8BmP0KSQxUZNx71NFwztjzTZoPkDrdvyIP_nv_wYAeKR2iZkPF2uwP_r/exec';
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: params,
+      });
+      const result = await response.json();
+
+      if (result.status === 'success') {
+        responseDiv.style.color = 'green';
+        responseDiv.textContent = result.message;
+        form.reset();
+        serviceInfoDiv.textContent = "Seleccioná un tratamiento para ver detalles.";
+        timeSelect.innerHTML = '<option value="" disabled selected>Seleccioná un horario</option>';
+      } else {
+        responseDiv.style.color = 'red';
+        responseDiv.textContent = result.message;
+      }
+    } catch (error) {
+      responseDiv.style.color = 'red';
+      responseDiv.textContent = 'Error enviando la reserva. Intentá nuevamente.';
+      console.error(error);
+    }
+  });
+
+</script>
   </main>
 
   <section class="map-section">
@@ -360,6 +508,46 @@ fechaInput.addEventListener('change', () => {
   }
 
   horarioSelect.innerHTML = opciones.map(h => `<option value="${h}">${h}</option>`).join('');
+});
+    // Enviar el formulario con fetch a Google Apps Script
+const form = document.getElementById('booking-form');
+const responseDiv = document.getElementById('response-message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+  const params = new URLSearchParams();
+
+  for (const pair of data) {
+    params.append(pair[0], pair[1]);
+  }
+
+  // Tu URL de Apps Script aquí
+  const url = 'https://script.google.com/macros/s/AKfycbyxgg5DTgdl8BmP0KSQxUZNx71NFwztjzTZoPkDrdvyIP_nv_wYAeKR2iZkPF2uwP_r/exec';
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: params,
+    });
+    const result = await response.json();
+
+    if (result.status === 'success') {
+      responseDiv.style.color = 'green';
+      responseDiv.textContent = result.message;
+      form.reset();
+      serviceInfoDiv.textContent = "Seleccioná un tratamiento para ver detalles.";
+      horarioSelect.innerHTML = '<option value="" disabled selected>Seleccioná un horario</option>';
+    } else {
+      responseDiv.style.color = 'red';
+      responseDiv.textContent = result.message;
+    }
+  } catch (error) {
+    responseDiv.style.color = 'red';
+    responseDiv.textContent = 'Error enviando la reserva. Intentá nuevamente.';
+    console.error(error);
+  }
 });
   </script>
 
