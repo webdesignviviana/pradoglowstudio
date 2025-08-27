@@ -69,7 +69,7 @@ nav {
 
 .nav-links li a:hover,
 .nav-links li a:focus {
-  color: #d4af37;
+  color: #fff;
   outline: none;
 }
 
@@ -85,7 +85,7 @@ nav {
 /* Banner */
 .banner {
   position: relative;
-  background-image: url('banner.jpg');
+  background-image: url('../imagen/banner.jpg');
   background-size: cover;
   background-position: center;
   height: 450px;
@@ -108,30 +108,35 @@ nav {
   position: relative;
   z-index: 2;
   padding: 2rem;
+  color: #fff;
+}
+
+.banner-content h2 {
+  color: #ffffff;
 }
 
 .btn-reserva {
-  margin-top: 10rem;
-  background-color: rgba(183,110,121);
+  margin-top: 1rem;
+  background-color: #c96;
   color: #fff;
   border: none;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
   border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.btn-reserva:hover,
-.btn-reserva:focus {
-  background-color: rgba(183,110,121,0.4);
-  outline: none;
+.btn-reserva:hover {
+  background-color: #a74;
 }
 
 /* Secciones */
 .section {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -146,7 +151,7 @@ nav {
 }
 
 .foto-placeholder {
-  background: url('Vane.jpeg') no-repeat center center/cover;
+  background: url('../imagen/Vane.jpeg') no-repeat center center/cover;
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -156,7 +161,7 @@ nav {
 
 .texto-sobre-mi {
   flex: 1 1 300px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #7a4e56cc;
 }
 
@@ -184,115 +189,71 @@ nav {
   font-weight: 700;
 }
 
-/* Booking */
-.booking-section {
-  background-color: #fce8e8;
-  padding: 1.5rem 0.5rem; /* menos padding general */
-  display: flex;
-  justify-content: center;
+/* LISTA DE PRECIOS */
+.price-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1200px;
 }
 
-.booking-card {
-  background-color: #fff;
-  padding: 1.5rem; /* más compacto */
-  border-radius: 12px;
-  box-shadow: 0 6px 16px #d4af37;
-  width: 100%;
-  max-width: 420px;
-}
-
-.booking-card h2 {
-  margin: 0 0 0.8rem 0; /* menos espacio abajo */
-  color: #d4af37;
-  font-size: 1.4rem;
-}
-
-form {
+.price-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem; /* menos espacio entre elementos */
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.9rem;
 }
 
-label {
-  font-weight: 600;
-  color: #7a4e56;
-  margin-bottom: 0.1rem;
-  font-size: 0.95rem;
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
 }
 
-select,
-input[type="date"],
-button {
-  padding: 0.4rem 0.7rem;
-  font-size: 0.95rem;
-  border: 2px solid #d4af37;
-  border-radius: 8px;
-  font-family: 'Playfair Display', serif;
+.price-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
   color: #d4af37;
-  background-color: #fff;
-  transition: border-color 0.3s;
 }
 
-select:focus,
-input[type="date"]:focus {
-  border-color: #b4902f;
-  outline: none;
-}
-
-input[type="text"],
-input[type="tel"] {
-  width: 80%;
-  padding: 0.4rem 0.7rem;
-  font-size: 0.95rem;
-  border: 2px solid #d4af37;
-  border-radius: 8px;
-  font-family: 'Playfair Display', serif;
-  color: #7a4e56;
-  background-color: #fff;
-  transition: border-color 0.3s, box-shadow 0.3s;
+.price-card .duration {
+  font-size: 0.8rem;
+  color: #666;
   margin-bottom: 0.3rem;
 }
 
-input[type="text"]:focus,
-input[type="tel"]:focus {
-  border-color: #b4902f;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+.price-card .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c96;
+  margin: 0.5rem 0;
 }
 
-button {
-  background-color: #d4af37;
-  color: white;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  border-radius: 30px;
-  transition: background-color 0.3s;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  margin-top: 0.3rem;
-}
-
-button:hover,
-button:focus {
-  background-color: #b4902f;
-  outline: none;
-}
-
-.service-info {
+.price-card .desc {
   font-size: 0.85rem;
-  color: #7a4e56;
-  margin-bottom: 0.4rem;
+  color: #555;
+  margin-bottom: 0.5rem;
 }
 
+.price-card .btn-reserva {
+  align-self: flex-end;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #c96;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
 
-.service-info {
-  font-style: italic;
-  color: #7a4e56cc;
-  font-size: 0.9rem;
-  min-height: 80px;
-  margin-top: -0.3rem;
-  margin-bottom: 0.5rem;
+.price-card .btn-reserva:hover {
+  background: #a74;
 }
 
 /* MAPA */
@@ -319,11 +280,11 @@ button:focus {
 
 /* FOOTER */
 footer {
-  background-color: #d4af37;
-  color: white;
   text-align: center;
-  padding: 1rem 1rem 2rem;
-  font-size: 0.9rem;
+  padding: 1rem;
+  background: #333;
+  color: #fff;
+  margin-top: 2rem;
 }
 
 footer a {
@@ -339,6 +300,12 @@ footer a:focus {
 }
 
 /* RESPONSIVE */
+@media (max-width: 1024px) {
+  .price-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 700px) {
   .sobre-mi-container {
     flex-direction: column;
@@ -368,5 +335,8 @@ footer a:focus {
   .nav-toggle {
     display: block;
   }
-}
 
+  .price-list {
+    grid-template-columns: 1fr;
+  }
+}
