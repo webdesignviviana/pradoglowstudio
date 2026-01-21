@@ -1,266 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PradoGlowStudio - Belleza real, piel saludable</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>En mantenimiento</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .box {
+      background: rgba(0,0,0,0.5);
+      padding: 40px;
+      border-radius: 16px;
+    }
+  </style>
 </head>
 <body>
+  <div class="box">
+    <h1>🚧 Sitio en mantenimiento</h1>
+    <p>Estamos realizando mejoras.</p>
+    <p>Volvemos pronto 💛</p>
+  </div>
 
-  <nav>
-    <div class="nav-container">
-      <a href="#" class="logo">PradoGlowStudio</a>
-      <ul class="nav-links">
-        <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="#porque-elegirnos">Por qué elegirnos</a></li>
-        <li><a href="#booking">Nuestros Tratamientos</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
-    </div>
-  </nav>
-
-  <header>
-    <section class="banner">
-      <div class="banner-overlay"></div>
-      <div class="banner-content">
-        <h1>Bienvenidos a PradoGlow Studio</h1>
-        <p>Tu espacio de bienestar</p>
-        <h2>Tratamientos Faciales & Bienestar</h2>
-      <p>Renová tu piel con metodos profesionales en un espacio de confianza.</p>
-      <a href="#booking" class="btn-reserva">Ver precios y reservar</a>
-      </div>
-     </section>
-  </header>
-  <main>
-    <section id="sobre-mi" class="section">
-      <h2>Sobre mí</h2>
-      <div class="sobre-mi-container">
-        <div class="foto-placeholder" aria-label="Vane.jpeg"></div>
-        <div class="texto-sobre-mi">
-          <p>Soy cosmetóloga y cosmiatra especializada en tratamientos faciales personalizados, combinando aparatología con dermocosmética profesional. Ofrezco higienes profundas, peelings estacionales, dermaplanning, microneedling, radiofrecuencia y más.</p>
-          <p>Trabajo con marcas dermatológicas de alta calidad, creo protocolos únicos para cada piel y acompaño cada proceso con cercanía y educación sobre el cuidado facial.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="porque-elegirnos" class="section">
-      <h2>¿Por qué elegirnos?</h2>
-      <ul>
-        <li>Protocolos personalizados adaptados a cada tipo de piel.</li>
-        <li>Uso de aparatología avanzada y dermocosmética profesional.</li>
-        <li>Acompañamiento cercano y educación para el cuidado facial.</li>
-        <li>Ambiente cálido y relajante pensado para vos.</li>
-      </ul>
-    </section>
-
-  <section id="booking" class="section booking-section">
-    <div class="booking-card">
-      <h2>Nuestros Tratamientos</h2>
-      <div class="price-list">
-
-        <!-- CONSULTA -->
-        <div class="price-card">
-          <h3>Consulta Facial Personalizada</h3>
-          <p class="price">$600</p>
-          <p class="desc">Diagnóstico y un plan de acción: análisis de piel, hábitos y objetivos. Incluye rutina 
-domiciliaria inicial o ajuste de rutina actual, y posibles tratamientos a realizar. Plan 
-tentativo determinando las frecuencias y objetivos en cada sesión. Al comenzar el 
-tratamiento, el monto de esta consulta se descontará de tu primera sesión.</p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Consulta%20Facial%20Personalizada" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-        <!-- HIGIENE FACIAL PROFUNDA -->
-        <div class="price-card">
-          <h3>Higiene Facial Profunda</h3>
-          <p class="price">$1400</p>
-          <p class="desc">Diagnóstico y evaluación personalizada. Preparamos tu piel con activos según su 
-necesidad, y aplicamos vapor de ozono que actúa como bactericida y ayuda a oxigenar y 
-abrir suavemente los poros. A continuación, realizamos extracciones manuales 
-controladas, seguida de tecnología de altafrecuencia y una máscara descongestiva. 
-Finalizamos con la aplicación de activos específicos, hidratación y fotoprotección.  </p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Higiene%20Facial%20Profunda" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-        <!-- ACNÉ -->
-        <div class="price-card">
-          <h3>Acné Detox</h3>
-          <p class="price">$1600</p>
-          <p class="desc">Ideal para pieles con brotes activos y textura irregular.  
-Diagnóstico y evaluación personalizada. Realizamos preparación queratolítica adaptada a 
-las necesidades de tu piel, seguido de oxigenación con vapor de ozono, extracciones 
-manuales y calma con aparatología de altafrecuencia. Continuamos con una máscara 
-purificante y finalizamos con hidratación intensiva y fotoprotección.</p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Acné%20Detox" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Plan Acné Combinado</h3>
-          <p class="duration">4 sesiones</p>
-          <p class="price">$5000</p>
-          <p class="desc">Tratamiento de acné en el cual combinaremos distintas técnicas para abordar brotes, 
-textura, y mejorar progresivamente el estado general de la piel. Los protocolos incluyen 
-máscara adecuada, relajación facial con crioballs, hidratación y fotoprotección.</p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20iniciar%20el%20Plan%20Acné" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-      <div class="price-card">
-          <h3>Cicatrices Post Acné</h3>
-          <p class="price">$2200</p>
-          <p class="desc">Tratamiento diseñado para marcas, cicatrices, secuelas de acné. No apto casos de acné 
-activo. 
-Diagnóstico y evaluación personalizada. Higiene seguida de exfoliación suave, adaptada a 
-las necesidades de tu piel. A continuación, aplicamos técnica de microneedling, con 
-microagujas estériles, con activo estéril seleccionado. </p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Cicatrices%20Post%20Acné" class="btn-reserva" target="_blank">Reservar</a>
-        </div>      
-
-        <div class="price-card">
-          <h3>Higiene Profunda de Espalda</h3>
-          <p class="price">$1900</p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Higiene%20Profunda%20de%20Espalda" class=
-       </div>
-        
-        <div class="price-card">
-          <h3>Hidravital Express</h3>
-          <p class="price">$1200</p>
-          <p class="desc">Tratamiento revitalizante. Diagnóstico y evaluación personalizada. 
-Realizamos higiene de piel, exfoliación renovadora específica, mascarilla adecuada, 
-relajación facial con crioballs, hidratación y fotoprotección. </p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Hidravital%20Express" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Radiolifting</h3>
-          <p class="price">$2400</p>
-          <p class="desc">El protocolo comienza con higiene de piel, renovación suave del estrato córneo, y luego 
-aplicamos tecnología de radiofrecuencia utilizando gel conductor. Este tratamiento, 
-basado en calor, mejora la firmeza, estimula la regeneración celular, redefine el óvalo 
-facial y activa la producción de colágeno. Continuamos aplicando una máscara 
-refrescante adaptada a tu tipo de piel, relajación facial con crioballs, hidratación y 
-finalizamos con fotoprotección. </p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Radiolifting" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Plan Radiolifting Activo</h3>
-          <p class="duration">3 sesiones</p>
-          <p class="price">$6600</p>
-          <p class="desc">Tratamiento intensivo reafirmante en 3 sesiones.
-          Una sesion cada 7 a 15 días.</p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Plan%20Radiolifting%20Activo" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-          
-        <div class="price-card">
-          <h3>Sesión Reinicio de Piel</h3>
-          <p class="price">$1400</p>
-          <p class="desc">Plan revitalizante en el cual se aplica una técnica adecuada de renovación celular para tu 
-tipo de piel (estas pueden comprender por ejemplo microdermoabrasión, ultrasonido, 
-peelings químicos o biológicos de temporada o dermaplanning). El protocolo incluye 
-hidratación, máscara adecuada para tu piel, relajación facial con crioballs, y 
-fotoprotección.</p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Sesión%20Renicio%20de%20Piel" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Plan Reincio de Piel</h3>
-          <p class="duration">4 sesiones</p>
-          <p class="price">$4800</p>
-          <p class="desc">Una sesión cada 15 a 21 días.
-            Ideal pieles engrosadas, con poros visibles, textura irregular. Programa intensivo pensado 
-para devolver a tu piel su equilibrio, mejorando la textura, luminosidad y calidad. 
-Durante este tratamiento se combinan de manera personalizada distintas técnicas como 
-higiene facial profunda, microdermoabrasión, ultrasonido, peelings químicos y biológicos 
-de temporada y dermaplanning. Esto permite trabajar en profundidad la renovación 
-cutánea, en sinergia con la rutina domiciliaria recomendada. Los protocolos incluyen 
-hidratación, máscara adecuada, relajación facial con crioballs y fotoprotección. </p>
-          <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Plan%20Renicio%20de%20Piel" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-
-          <div class="price-card">
-          <h3>Glitter Party</h3>
-          <p class="price">$1100</p>
-          <p class="desc">
-            Tratamiento facial intensivo para revitalizar tu piel en poco tiempo, justo antes de tu fiesta o evento. 
-Realizaremos una higiene superficial, renovación celular suave adecuada a tu piel, aplicamos activos tensores adecuados y finalizaremos con una máscara nutritiva efecto 
-glow. La piel más linda del evento!
-          </p>
-          <a href="https://wa.me59892051007?text=Hola!%20Quiero%20reservar%20Glitter%20Party" class="btn-reserva" target="_blank">Reservar</a>
-        </div>
-          
-          <!-- DERMAPEN -->
-<div class="price-card">
-  <h3>Mesoterapia Facial</h3>
-  <p class="price">$2000</p>
-  <p class="desc">
-    Higiene profunda y microinyecciones con activos específicos. Ideal para pieles apagadas o deshidratadas.
-  </p>
-  <a href="https://wa.me59892051007?text=Hola!%20Quiero%20reservar%20Mesoterapia%20Facial" class="btn-reserva" target="_blank">Reservar</a>
-</div>
-
-<div class="price-card">
-  <h3>Dermapen Diamond Series (3 sesiones)</h3>
-  <p class="duration">3 sesiones</p>
-  <p class="price">$6800</p>
-  <p class="desc">
-    Microperforaciones con activos tensores para mejorar arrugas, poros y textura de la piel.
-  </p>
-  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Dermapen%20Diamond%20Series" class="btn-reserva" target="_blank">Reservar</a>
-</div>
-
-<div class="price-card">
-  <h3>Pack Microneedling Full Experience</h3>
-  <p class="price">$3800</p>
-  <p class="desc">
-    Tratamiento intensivo para textura, luminosidad y firmeza de piel y labios.
-  </p>
-  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Pack%20Microneedling%20Full%20Experience" class="btn-reserva" target="_blank">Reservar</a>
-</div>
-
-<div class="price-card">
-  <h3>Pack Microneedling Full Experience - 3 sesiones</h3>
-  <p class="duration">3 sesiones</p>
-  <p class="price">$10000</p>
-  <p class="desc">
-    Plan completo de 3 sesiones para resultados duraderos en textura, luminosidad y firmeza.
-  </p>
-  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Pack%20Microneedling%20Full%20Experience%203%20sesiones" class="btn-reserva" target="_blank">Reservar</a>
-</div>
-
-<div class="price-card">
-  <h3>Peelings de Invierno</h3>
-  <p class="price">$1400</p>
-  <p class="desc">
-    Renovación profunda y visible para transformar la piel. Pack 4 sesiones: $5000.
-  </p>
-  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Peeling%20Invierno" class="btn-reserva" target="_blank">Reservar</a>
-</div>
-
-<div class="price-card">
-  <h3>Peelings de Verano</h3>
-  <p class="price">$1200</p>
-  <p class="desc">
-    Renovación ligera e hidratante para mantener la piel radiante. Pack 4 sesiones: $4200.
-  </p>
-  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Peeling%20Verano" class="btn-reserva" target="_blank">Reservar</a>
-</div>
-      </div>
-    </div>
-  </section>
-    
-  <section class="map-section">
-    <h2 class="map-title">Estamos en Prado, Montevideo</h2>
-    <div class="map-wrapper">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.6054295183347!2d-56.20650948497424!3d-34.88572198039972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2a0aaeb872ff5%3A0x3f54156d9d05bb9a!2sPrado%2C%20Montevideo!5e0!3m2!1ses-419!2suy!4v1689563832200!5m2!1ses-419!2suy"
-        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </section>
   <footer>
     <p>© 2025 PradoGlowStudio. Diseño por <a href="#">Viviana Nuñez</a></p>
   </footer>
