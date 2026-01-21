@@ -1,81 +1,127 @@
-/* ================================
-   MODO MANTENIMIENTO — PRO
-================================ */
+/* ==========================
+   RESET
+========================== */
 
-.maintenance-wrapper {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================
+   FONDO
+========================== */
+
+body.mnt-body {
   min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
   background: linear-gradient(
       rgba(0, 0, 0, 0.45),
       rgba(0, 0, 0, 0.45)
     ),
     url("background.jpeg") center / cover no-repeat;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
 }
 
-.maintenance-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+/* ==========================
+   PARTÍCULAS
+========================== */
 
-  border-radius: 24px;
-  padding: 50px 40px;
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ==========================
+   LAYOUT
+========================== */
+
+.mnt-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================
+   TARJETA
+========================== */
+
+.mnt-card {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 28px;
+  padding: 50px 42px;
   text-align: center;
   max-width: 420px;
   width: 100%;
 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-
-  animation: fadeUp 0.8s ease forwards;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  animation: mntFadeUp 0.9s ease forwards;
 }
 
-.maintenance-logo {
+/* ==========================
+   LOGO
+========================== */
+
+.mnt-logo {
   max-width: 160px;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
-.maintenance-card h1 {
-  color: #fff;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
+/* ==========================
+   TEXTO
+========================== */
+
+.mnt-title {
+  color: #ffffff;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
   margin-bottom: 10px;
 }
 
-.subtitle {
+.mnt-subtitle {
   color: #f1f1f1;
   font-size: 1rem;
   margin-bottom: 18px;
 }
 
-.soon {
+.mnt-soon {
   color: #ffd27d;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 26px;
 }
 
-/* Loader */
+/* ==========================
+   LOADER
+========================== */
 
-.loader {
-  width: 42px;
-  height: 42px;
+.mnt-loader {
+  width: 44px;
+  height: 44px;
   border: 4px solid rgba(255, 255, 255, 0.3);
   border-top: 4px solid #ffd27d;
   border-radius: 50%;
   margin: 0 auto;
-  animation: spin 1s linear infinite;
+  animation: mntSpin 1s linear infinite;
 }
 
-/* Animaciones */
+/* ==========================
+   ANIMACIONES
+========================== */
 
-@keyframes spin {
+@keyframes mntSpin {
   to {
     transform: rotate(360deg);
   }
 }
 
-@keyframes fadeUp {
+@keyframes mntFadeUp {
   from {
     opacity: 0;
     transform: translateY(20px);
