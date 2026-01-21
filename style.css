@@ -1,89 +1,77 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  font-family: 'Poppins', sans-serif;
+body.mnt-body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("background.jpeg") center / cover no-repeat;
 }
 
-body {
-  background: linear-gradient(120deg, #b9b3a7, #9f9a8f);
-  overflow: hidden;
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* ===== Partículas ===== */
-.particles::before,
-.particles::after {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: float 60s linear infinite;
-}
-
-.particles::after {
-  background-size: 100px 100px;
-  opacity: 0.4;
-  animation-duration: 120s;
-}
-
-@keyframes float {
-  from { transform: translateY(0); }
-  to { transform: translateY(200px); }
-}
-
-/* ===== Contenido ===== */
-.container {
+.mnt-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   position: relative;
   z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+.mnt-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 26px;
+  padding: 50px 40px;
   text-align: center;
-  color: #fff;
-  padding: 20px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
 }
 
-/* Marca */
-.brand {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 3rem;
-  letter-spacing: 1px;
-  margin-bottom: 25px;
-  color: #fff8e8;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.25);
+.mnt-logo {
+  max-width: 160px;
+  margin-bottom: 20px;
 }
 
-/* Título */
-.title {
+.mnt-title {
+  color: white;
   font-size: 2rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-/* Texto */
-.text {
-  font-size: 1.1rem;
-  opacity: 0.95;
-  margin: 4px 0;
+.mnt-subtitle {
+  color: #eee;
+  margin-bottom: 16px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .brand {
-    font-size: 2.2rem;
-  }
-  .title {
-    font-size: 1.6rem;
-  }
+.mnt-soon {
+  color: #ffd27d;
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+.mnt-loader {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top: 4px solid #ffd27d;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
