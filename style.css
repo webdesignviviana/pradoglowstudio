@@ -1,36 +1,87 @@
-/* ===== MODO MANTENIMIENTO ===== */
+/* ================================
+   MODO MANTENIMIENTO — PRO
+================================ */
 
-.maintenance {
+.maintenance-wrapper {
   min-height: 100vh;
   background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
     ),
     url("background.jpeg") center / cover no-repeat;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+}
+
+.maintenance-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 24px;
+  padding: 50px 40px;
   text-align: center;
+  max-width: 420px;
+  width: 100%;
 
-  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+
+  animation: fadeUp 0.8s ease forwards;
 }
 
-.maintenance h1 {
-  color: #fff;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  margin-bottom: 10px;
-}
-
-.maintenance p {
-  color: #fff;
-  font-size: 1.1rem;
-  margin: 6px 0;
-}
-
-.logo {
-  max-width: 200px;
+.maintenance-logo {
+  max-width: 160px;
   margin-bottom: 25px;
 }
 
+.maintenance-card h1 {
+  color: #fff;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #f1f1f1;
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+
+.soon {
+  color: #ffd27d;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Loader */
+
+.loader {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffd27d;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+/* Animaciones */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
