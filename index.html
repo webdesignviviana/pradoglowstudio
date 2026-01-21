@@ -1,83 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Sitio en mantenimiento</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="mantenimiento.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PradoGlow Studio | Mantenimiento</title>
+
+  <!-- Google Font elegante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-<body class="mnt-body">
+  <!-- partículas -->
+  <div class="particles"></div>
 
-  <canvas id="particles"></canvas>
+  <main class="container">
 
-  <main class="mnt-wrapper">
-    <div class="mnt-card">
+    <h1 class="brand">PradoGlow Studio</h1>
 
-      <!-- ⚠️ SOLO CAMBIÁ ESTA RUTA POR LA QUE YA SABÉS QUE FUNCIONA -->
-      <img src="Logo.jpeg" alt="Logo" class="mnt-logo">
+    <h2 class="title">🚧 Sitio en mantenimiento</h2>
 
-      <h1 class="mnt-title">🚧 Sitio en mantenimiento</h1>
+    <p class="text">Estamos realizando mejoras en el sitio.</p>
+    <p class="text">Volvemos pronto 💛</p>
 
-      <p class="mnt-subtitle">
-        Estamos realizando mejoras para brindarte una mejor experiencia.
-      </p>
-
-      <p class="mnt-soon">
-        Volvemos pronto 💛
-      </p>
-
-      <div class="mnt-loader"></div>
-
-    </div>
   </main>
-
-  <script>
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener("resize", resize);
-    resize();
-
-    const particles = [];
-    const COUNT = 45;
-
-    for (let i = 0; i < COUNT; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 2 + 1,
-        speed: Math.random() * 0.4 + 0.1,
-        alpha: Math.random() * 0.5 + 0.2
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.alpha})`;
-        ctx.fill();
-
-        p.y -= p.speed;
-        if (p.y < -10) {
-          p.y = canvas.height + 10;
-          p.x = Math.random() * canvas.width;
-        }
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-  </script>
 
 </body>
 </html>
+
