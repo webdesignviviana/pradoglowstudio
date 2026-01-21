@@ -1,133 +1,89 @@
-/* ==========================
-   RESET
-========================== */
-
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* ==========================
-   FONDO
-========================== */
-
-body.mnt-body {
-  min-height: 100vh;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.45)
-    ),
-    url("background.jpeg") center / cover no-repeat;
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* ==========================
-   PARTÍCULAS
-========================== */
-
-#particles {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+body {
+  background: linear-gradient(120deg, #b9b3a7, #9f9a8f);
+  overflow: hidden;
 }
 
-/* ==========================
-   LAYOUT
-========================== */
+/* ===== Partículas ===== */
+.particles::before,
+.particles::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: float 60s linear infinite;
+}
 
-.mnt-wrapper {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+.particles::after {
+  background-size: 100px 100px;
+  opacity: 0.4;
+  animation-duration: 120s;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(200px); }
+}
+
+/* ===== Contenido ===== */
+.container {
   position: relative;
   z-index: 2;
-}
-
-/* ==========================
-   TARJETA
-========================== */
-
-.mnt-card {
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  border-radius: 28px;
-  padding: 50px 42px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  max-width: 420px;
-  width: 100%;
-
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-  animation: mntFadeUp 0.9s ease forwards;
+  color: #fff;
+  padding: 20px;
 }
 
-/* ==========================
-   LOGO
-========================== */
-
-.mnt-logo {
-  max-width: 160px;
-  margin-bottom: 24px;
+/* Marca */
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  color: #fff8e8;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.25);
 }
 
-/* ==========================
-   TEXTO
-========================== */
-
-.mnt-title {
-  color: #ffffff;
-  font-size: clamp(1.6rem, 4vw, 2.3rem);
-  margin-bottom: 10px;
+/* Título */
+.title {
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
 
-.mnt-subtitle {
-  color: #f1f1f1;
-  font-size: 1rem;
-  margin-bottom: 18px;
+/* Texto */
+.text {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin: 4px 0;
 }
 
-.mnt-soon {
-  color: #ffd27d;
-  font-weight: 600;
-  margin-bottom: 26px;
-}
-
-/* ==========================
-   LOADER
-========================== */
-
-.mnt-loader {
-  width: 44px;
-  height: 44px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid #ffd27d;
-  border-radius: 50%;
-  margin: 0 auto;
-  animation: mntSpin 1s linear infinite;
-}
-
-/* ==========================
-   ANIMACIONES
-========================== */
-
-@keyframes mntSpin {
-  to {
-    transform: rotate(360deg);
+/* Responsive */
+@media (max-width: 600px) {
+  .brand {
+    font-size: 2.2rem;
   }
-}
-
-@keyframes mntFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .title {
+    font-size: 1.6rem;
   }
 }
