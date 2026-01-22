@@ -48,14 +48,21 @@
   </footer>
 
   <!-- JS PARA MENÚ RESPONSIVE -->
-  <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
+<script>
+  console.log('JS cargado');
 
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
+      console.log('click');
       navLinks.classList.toggle('nav-open');
     });
-  </script>
+  } else {
+    console.log('No encuentra elementos del menú');
+  }
+</script>
 
 </body>
 </html>
