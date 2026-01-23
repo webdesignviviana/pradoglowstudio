@@ -1,4 +1,5 @@
-/* Fuentes y base */
+/* ================= BASE ================= */
+
 body {
   font-family: 'Playfair Display', serif;
   background-color: #fff5f8;
@@ -27,23 +28,29 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* NAV */
+/* ================= NAV ================= */
+
 nav {
   background-color: #d4af37;
   color: #fff;
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all 0.3s ease;
 }
 
 .nav-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -58,19 +65,19 @@ nav {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li a {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
-  transition: color 0.3s;
+  transition: opacity 0.3s;
 }
 
-.nav-links li a:hover,
-.nav-links li a:focus {
-  color: #fff;
-  outline: none;
+.nav-links li a:hover {
+  opacity: 0.8;
 }
 
 .nav-toggle {
@@ -82,7 +89,8 @@ nav {
   cursor: pointer;
 }
 
-/* Banner */
+/* ================= BANNER ================= */
+
 .banner {
   position: relative;
   background-image: url('banner.jpg');
@@ -95,11 +103,12 @@ nav {
   color: white;
   text-align: center;
   overflow: hidden;
+  margin-top: 0; /* evita franja */
 }
 
 .banner-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background-color: rgba(255, 223, 83, 0.55);
   z-index: 1;
 }
@@ -125,23 +134,26 @@ nav {
   border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
   text-decoration: none;
   display: inline-block;
 }
 
 .btn-reserva:hover {
   background-color: #a74;
+  transform: translateY(-2px);
 }
 
-/* Secciones */
+/* ================= SECCIONES ================= */
+
 .section {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* Sobre mí */
+/* ===== SOBRE MI ===== */
+
 .sobre-mi-container {
   display: flex;
   flex-wrap: wrap;
@@ -165,7 +177,8 @@ nav {
   color: #7a4e56cc;
 }
 
-/* Por qué elegirnos */
+/* ===== POR QUÉ ELEGIRNOS ===== */
+
 #porque-elegirnos ul {
   list-style: none;
   padding-left: 0;
@@ -189,7 +202,8 @@ nav {
   font-weight: 700;
 }
 
-/* LISTA DE PRECIOS */
+/* ================= PRECIOS ================= */
+
 .price-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -206,7 +220,6 @@ nav {
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ← antes: space-between */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-size: 0.9rem;
 }
@@ -243,21 +256,12 @@ nav {
 
 .price-card .btn-reserva {
   align-self: flex-end;
-   margin-top: auto;
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #c96;
-  color: #fff;
-  text-decoration: none;
+  margin-top: auto;
   border-radius: 8px;
-  transition: background 0.3s ease;
 }
 
-.price-card .btn-reserva:hover {
-  background: #a74;
-}
+/* ================= MAPA ================= */
 
-/* MAPA */
 .map-section {
   text-align: center;
   padding: 3rem 1rem;
@@ -265,7 +269,6 @@ nav {
 }
 
 .map-title {
-  font-family: 'Playfair Display', cursive;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   color: #d4af37;
@@ -279,7 +282,8 @@ nav {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 footer {
   text-align: center;
   padding: 1rem;
@@ -294,13 +298,12 @@ footer a {
   font-weight: 600;
 }
 
-footer a:hover,
-footer a:focus {
+footer a:hover {
   text-decoration: underline;
-  outline: none;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
+
 @media (max-width: 1024px) {
   .price-list {
     grid-template-columns: repeat(2, 1fr);
@@ -308,6 +311,35 @@ footer a:focus {
 }
 
 @media (max-width: 700px) {
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #d4af37; /* mismo color que nav */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    animation: menuFade 0.3s ease;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0.4rem 0;
+  }
+
   .sobre-mi-container {
     flex-direction: column;
     align-items: center;
@@ -318,28 +350,12 @@ footer a:focus {
     height: 180px;
   }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #b76e79;
-    position: absolute;
-    top: 56px;
-    right: 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-links.nav-open {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
   .price-list {
     grid-template-columns: 1fr;
   }
 }
 
-
+@keyframes menuFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
