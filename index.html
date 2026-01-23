@@ -206,7 +206,7 @@ glow. La piel más linda del evento!
     Tecnología de microinyección intradérmica. Consiste en la infiltración de activos estériles 
 específicos para tratar profundamente hiperpigmentaciones, arrugas, flacidez y falta de 
 luminosidad. Esta tecnología estimula directamente la producción de colágeno y elastina 
-a nivel epidérmico y epidérmico, optimizando la calidad de la piel. 
+a nivel epidérmico y dérmico, optimizando la calidad de la piel. 
   </p>
   <a href="https://wa.me59892051007?text=Hola!%20Quiero%20reservar%20Mesoterapia%20Facial" class="btn-reserva" target="_blank">Reservar</a>
 </div>
@@ -244,6 +244,26 @@ profunda.
   <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Plan%20Dermapen%20%20Hidralips" class="btn-reserva" target="_blank">Reservar</a>
 </div>
 
+ <div class="price-card">
+  <h3>Plan Mesoterapia con Dermapen + Ezosomas </h3>
+  <p class="price">$3200</p>
+  <p class="desc">Tratamiento bioestimulante avanzado, de última generación en regeneración cutánea. 
+Estimula la producción de colágeno y elastina, mejora la calidad del tejido y acelera los 
+procesos de renovación. 
+</p>
+  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Plan%20Dermapen%20%20Hidralips" class="btn-reserva" target="_blank">Reservar</a>
+</div>
+
+<div class="price-card">
+  <h3>Plan Mesoterapia con Dermapen + Ezosomas </h3>
+  <p class="price">$9000</p>
+    <p class="duration">3 sesiones</p>
+  <p class="desc">Plan del tratamiento Mesoterapia con Dermapen + Ezosomas, compuesto por 3 sesiones. 
+    Indicado para potenciar y prolongar los resultados en piel y labios, 
+    logrando mayor hidratación, definición y uniformidad de forma progresiva.</p>
+  <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Plan%20Dermapen%20%20Hidralips" class="btn-reserva" target="_blank">Reservar</a>
+</div>
+
 <div class="price-card">
   <h3>Peelings de Invierno</h3>
   <p class="price">$1600</p>
@@ -260,9 +280,10 @@ máscara adecuada, masaje facial con crioballs, y fotoprotección.
   <h3>Pack Peeling de Invierno</h3> 
   <p class="price">$5800</p>
    <p class="duration">4 sesiones</p>
-  <p class="desc">Plan del tratamiento Peelings de Invierno, compuesto por 4 sesiones. Recomendado para potenciar y sostener los resultados de 
-  renovación cutánea de forma progresiva, 
-  logrando una piel más luminosa, uniforme y revitalizada.
+  <p class="desc">Tratamiento bioestimulante de última generación que, a través de Dermapen y exosomas, 
+    estimula la producción de colágeno y elastina, mejora la calidad del tejido y acelera la renovación celular. 
+    El pack de 3 sesiones potencia y prolonga los resultados,
+    logrando una piel más firme, luminosa y rejuvenecida de forma progresiva.
      </p>
   <a href="https://wa.me/59892051007?text=Hola!%20Quiero%20reservar%20Pack%20Peeling%20Full%20Invierno%203%20sesiones" class="btn-reserva" target="_blank">Reservar</a>
 </div>
@@ -305,5 +326,21 @@ adecuada, relajación facial con crioballs y fotoprotección.
     <p>© 2025 PradoGlowStudio. Diseño por <a href="#">Viviana Nuñez</a></p>
   </footer>
  
+  <script>
+  const toggleBtn = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const links = document.querySelectorAll('.nav-links a');
+
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-open');
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+    });
+  });
+</script>
+
 </body>
 </html>
